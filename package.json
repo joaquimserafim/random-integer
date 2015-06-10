@@ -1,6 +1,6 @@
 {
   "name": "random-integer",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "generate a random integer",
   "main": "index.js",
   "files": [

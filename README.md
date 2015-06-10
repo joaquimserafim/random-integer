@@ -15,12 +15,12 @@ var random = require('random-integer')
 
 ## Usage
 
-##### one number - returns an integer between 0 and 1024 (inclusive)
+##### one number - returns an integer between 0 and 1024 (inclusive for both)
 ```js
 random(1024)
 ```
 
-##### two numbers - returns an integer between 1025 and 9000 (inclusive)
+##### two numbers - returns an integer between 1025 and 9000 (inclusive for both)
 ```js
 random(1025, 9000)
 ```
