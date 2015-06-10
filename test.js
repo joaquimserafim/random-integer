@@ -25,4 +25,9 @@ describe('random-integer', function() {
     }
     done()
   })
+
+  it('no arguments should return `NaN`', function(done) {
+    expect(isNaN(random())).to.be.true()
+    done()
+  })
 })
