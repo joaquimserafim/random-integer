@@ -2,11 +2,9 @@
 
 module.exports = randomInteger
 
-function randomInteger (int1, int2) {
-  if (arguments.length === 1) {
-    int2 = int1
-    int1 = 0
-  }
-
-  return Math.floor(Math.random() * (int2 - int1 + 1) + int1)
+function randomInteger (int1, int2 = 0) {
+  return Math.floor(
+    Math.random() * (Math.abs(int1) - Math.abs(int2) + 1) +
+    Math.abs(int2)
+  )
 }
