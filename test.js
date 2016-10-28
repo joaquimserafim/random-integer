@@ -1,33 +1,45 @@
 'use strict'
 
-var Lab   = require('lab')
-var Code  = require('code')
+const test = require('tape')
 
-var lab = module.exports.lab = Lab.script()
+const random = require('./')
 
-var describe  = lab.describe
-var it        = lab.it
-var expect    = Code.expect
+test('random-integer', (assert) => {
+  assert.deepEqual(
+    [1024, 1025].indexOf(random(1024, 1025)) !== -1,
+    true,
+    'should return a number with the value `1024` or `1025`'
+  )
 
-var random = require('./')
+  assert.deepEqual(
+    Array.from({length: 11}, (v, i) => i++).indexOf(random(10)) !== -1,
+    true,
+    'should return a number with the value `0` or `10`'
+  )
 
-describe('random-integer', function() {
-  it('run a test 1000 times providing `from` and `to` value', function(done) {
-    for (var i = 0; i < 1000; i++) {
-      expect(random(1024, 1025)).to.be.within(1024, 1025)
-    }
-    done()
-  })
+  assert.deepEqual(
+    isNaN(random()),
+    true,
+    'should return `NaN` when an argument is omitted'
+  )
 
-  it('run a test 1000 times providing only the `to` value', function(done) {
-    for (var i = 0; i < 1000; i++) {
-      expect(random(10)).to.be.within(0, 10)
-    }
-    done()
-  })
+  assert.deepEqual(
+    Array.from({length: 11}, (v, i) => i++).indexOf(random(-10)) !== -1,
+    true,
+    'should make positive a negative number'
+  )
 
-  it('no arguments should return `NaN`', function(done) {
-    expect(isNaN(random())).to.be.true()
-    done()
-  })
+  assert.deepEqual(
+   random(''),
+    0,
+    'should return `0` when is an empty string'
+  )
+
+  assert.deepEqual(
+    [1024, 1025].indexOf(random('1024', '1025')) !== -1,
+    true,
+    'should convert numbers passed as a string'
+  )
+
+  assert.end()
 })
